@@ -1,14 +1,11 @@
+This repository contains samples showing how to build an AI application with DevOps in mind. For an AI application there are always two streams of work, Data Scientists building machine learning models and App developers building the application and exposing it to end users to consume.
 
-# Contributing
+In this tutorial we demonstrate how you can build a continous integration pipeline for an AI application. The pipeline kicks off for each new commit, run the test suite, if the test passes takes the latest build, packages it in a Docker container. The container is then deployed using Azure container service (ACS) and images are securely stored in Azure container registry (ACR). ACS is running Kubernetes for managing container cluster but you can choose Docker Swarm or Mesos.
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+The application securely pulls the latest model from an Azure Storage account and packages that as part of the application. Teh deployed application has the app code and ML model packaged as single container.
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+This decouples the app developers and data scientists, to make sure that the production app is always running the latest code with latest ML model.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app.
+
+The goal is to show how easy it is do devops for an AI application.
