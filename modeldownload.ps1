@@ -18,7 +18,7 @@ $DestinationFolder = $env:System_DefaultWorkingDirectory
 Write-Host $DestinationFolder
 
 # Add your Azure account to the local PowerShell environment.
-Add-AzureAccount
+# Add-AzureAccount
 
 # Set a default Azure subscription.
 #Select-AzureSubscription -SubscriptionName $SubscriptionName
