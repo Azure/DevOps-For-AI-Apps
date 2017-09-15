@@ -22,7 +22,7 @@ Write-Host $DestinationFolder
 
 # Set a default Azure subscription.
 #Select-AzureSubscription -SubscriptionName $SubscriptionName
-Get-AzureRmSubscription –SubscriptionName $SubscriptionName | Select-AzureRmSubscription
+# Get-AzureRmSubscription –SubscriptionName $SubscriptionName | Select-AzureRmSubscription
 
 Set-AzureRmCurrentStorageAccount –ResourceGroupName $ResourceGroup –StorageAccountName $StorageAccountName
 
