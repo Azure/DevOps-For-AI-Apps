@@ -14,7 +14,7 @@ $Location = "East US 2"
 # Give a name to your new container.
 $ContainerName = "pretrainedmodel"
 
-$DestinationFolder = $env:System_DefaultWorkingDirectory
+$DestinationFolder = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 Write-Host $DestinationFolder
 
 # Add your Azure account to the local PowerShell environment.
