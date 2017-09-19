@@ -7,7 +7,7 @@ Usage:
 endef
 export PROJECT_HELP_MSG
 
-acr = predictivehub.azurecr.io
+acr = blogacr.azurecr.io
 image_name = $(acr)/modelapi
 vpath % flaskwebapp
 
