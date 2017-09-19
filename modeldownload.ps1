@@ -1,4 +1,9 @@
 
+param(
+    [string]
+    $destinationfolder
+)
+
 # begin
 # Update with the name of your subscription.
 $SubscriptionName = "Marketing Automation"
@@ -15,7 +20,7 @@ $Location = "East US 2"
 $ContainerName = "pretrainedmodel"
 
 #$DestinationFolder = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
-Write-Host $DestinationFolder
+Write-Host $destinationfolder
 
 # Add your Azure account to the local PowerShell environment.
 # Add-AzureAccount
@@ -38,9 +43,9 @@ Set-AzureRmCurrentStorageAccount –ResourceGroupName $ResourceGroup –StorageA
 $blobs = Get-AzureStorageBlob -Container $ContainerName
 
 # Create the destination directory.
-New-Item -Path $DestinationFolder -ItemType Directory -Force  
+New-Item -Path $destinationfolder -ItemType Directory -Force  
 
 # Download blobs into the local destination directory.
-$blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
+$blobs | Get-AzureStorageBlobContent –Destination $destinationfolder
 
 # end
