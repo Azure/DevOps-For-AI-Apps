@@ -29,7 +29,7 @@ $ContainerName = "pretrainedmodel"
 #Select-AzureSubscription -SubscriptionName $SubscriptionName
 # Get-AzureRmSubscription –SubscriptionName $SubscriptionName | Select-AzureRmSubscription
 
-Set-AzureRmCurrentStorageAccount –ResourceGroupName $ResourceGroup –StorageAccountName $StorageAccountName
+Set-AzureRmCurrentStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName $StorageAccountName
 
 # Set a default storage account.
 #Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
