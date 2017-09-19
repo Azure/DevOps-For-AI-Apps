@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 MAINTAINER Richin Jain <rijai<at>microsoft.com>
 RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
