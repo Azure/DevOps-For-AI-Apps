@@ -2,5 +2,6 @@
 
 docker images
 docker ps -a
-sleep 20s
-curl http://localhost:88/version
+docker run -p 88:88 acrforblog.azurecr.io/model-api:89
+
+#curl http://localhost:88/version
