@@ -3,15 +3,21 @@ import json
 import logging
 import urllib
 from io import BytesIO
+import sys
 
 import requests
 import toolz
 from PIL import Image, ImageOps
 
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+logger.addHandler(ch)
 
 TEST_IMAGES ={ # Examples used for testing
 'https://www.britishairways.com/assets/images/information/about-ba/fleet-facts/airbus-380-800/photo-gallery/240x295-BA-A380-exterior-2-high-res.jpg':
