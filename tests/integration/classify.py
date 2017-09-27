@@ -8,11 +8,12 @@ import requests
 import toolz
 from PIL import Image, ImageOps
 
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-TEST_IMAGES ={
+TEST_IMAGES ={ # Examples used for testing
 'https://www.britishairways.com/assets/images/information/about-ba/fleet-facts/airbus-380-800/photo-gallery/240x295-BA-A380-exterior-2-high-res.jpg':
 'n02690373 airliner',
 }
@@ -63,6 +64,7 @@ if __name__=='__main__':
         r = requests.post('http://0.0.0.0:88/score', data=jsonimg, headers=headers)
         json_response = r.json()
         logger.info(json_response)
-        if json_response['result'][0] != label:
-            raise ValueError('The predicted label {} is not the same as {}'.format(json_response['result'][0],label))
-        logger.info('CORRECT! {}'.format(json_response['result'][0]))
+        prediction=json_response['result'][0][0][0][0]
+        if prediction != label:
+            raise ValueError('The predicted label {} is not the same as {}'.format(prediction,label))
+        logger.info('CORRECT! {}'.format(prediction))
