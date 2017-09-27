@@ -1,8 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-docker images
-docker ps -a
-docker run -d -p 88:88 --network=host acrforblog.azurecr.io/model-api:94
-#docker inspect acrforblog.azurecr.io/model-api:91
-sleep 20s
-curl http://0.0.0.0:88/version
+$IMAGE=$1
+
+
+docker run -d -p 88:88 $IMAGE
+reply=$(curl http://0.0.0.0:88/version)# Simple API test
+if [ $reply == 2.0rc1 ]; then
+	echo "Successfully validated version API call"
+else
+	echo "Basic API call failed"
+	exit 1
+fi
