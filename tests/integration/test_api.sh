@@ -18,6 +18,14 @@ else
         exit 1
 fi
 
+# Testing classification
+echo "Testing Classification"
+source activate
+result=$(python classify.py)
+source deactivate
+
+echo $result
+
 echo "Stopping container and removing"
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
