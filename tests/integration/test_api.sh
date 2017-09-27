@@ -10,7 +10,7 @@ sleep 10
 
 # Simple API test
 echo "Testing API"
-reply=$(curl http://0.0.0.0:88/version)
+reply=$(curl -s http://0.0.0.0:88/version)
 if [[ $reply == 2.0rc1 ]]; then
         echo -e "Successfully validated version API call"
 else
@@ -20,9 +20,9 @@ fi
 
 # Testing classification
 echo "Testing Classification"
- source anaconda/bin/activate
+source ~/anaconda/bin/activate root
 result=$(python test/classify.py)
-source anaconda/bin/deactivate
+source ~/anaconda/bin/deactivate
 
 echo $result
 
