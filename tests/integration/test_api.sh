@@ -20,9 +20,9 @@ fi
 
 # Testing classification
 echo "Testing Classification"
-source activate
-result=$(python classify.py)
-source deactivate
+ source anaconda/bin/activate
+result=$(python test/classify.py)
+source anaconda/bin/deactivate
 
 echo $result
 
