@@ -4,6 +4,7 @@
 IMAGE=$1
 echo "Starting Docker image " $IMAGE
 
+docker pull $IMAGE
 docker run -d -p 88:88 $IMAGE
 
 sleep 10
