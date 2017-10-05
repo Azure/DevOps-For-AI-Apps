@@ -3,8 +3,6 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 MODEL_API_URL=$1
 
-sleep 10
-
 # Simple API test
 echo "Testing API"
 reply=$(curl -s $MODEL_API_URL/version)
