@@ -1,17 +1,13 @@
 #!/bin/bash
-# This script tests the docker image passed to it
-
-IMAGE=$1
-echo "Starting Docker image " $IMAGE
-
-docker pull $IMAGE
-docker run -d -p 88:88 $IMAGE
+# This script tests model api passed to it
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+MODEL_API_URL=$1
 
 sleep 10
 
 # Simple API test
 echo "Testing API"
-reply=$(curl -s http://0.0.0.0:88/version)
+reply=$(curl -s $MODEL_API_URL/version)
 if [[ $reply == 2.0rc1 ]]; then
         echo -e "Successfully validated version API call"
 else
@@ -21,15 +17,10 @@ fi
 
 # Testing classification
 echo "Testing Classification"
-source ~/anaconda/bin/activate root
-result=$(python test/classify.py)
-source ~/anaconda/bin/deactivate
+source activate $(whoami)
+result=$(python $DIR/classify.py)
+source deactivate
 
 echo $result
-
-echo "Stopping container and removing"
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-
 echo "Finished"
 exit 0

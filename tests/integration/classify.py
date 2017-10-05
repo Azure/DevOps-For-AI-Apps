@@ -1,3 +1,4 @@
+import os
 import base64
 import json
 import logging
@@ -67,7 +68,7 @@ if __name__=='__main__':
     headers = {'content-type': 'application/json'}
     for url, label in TEST_IMAGES.items():
         jsonimg = img_url_to_json(url)
-        r = requests.post('http://0.0.0.0:88/score', data=jsonimg, headers=headers)
+        r = requests.post(os.environ.get('MODEL_API_URL', "http://0.0.0.0:88").rstrip('/') + "/score", data=jsonimg, headers=headers)
         json_response = r.json()
         logger.info(json_response)
         prediction=json_response['result'][0][0][0][0]
