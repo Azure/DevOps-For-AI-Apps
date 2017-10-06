@@ -10,8 +10,11 @@ az
 export AZURE_STORAGE_ACCOUNT=$1
 export AZURE_STORAGE_KEY=$2
 export container_name=$3
-export blob_name=$4
+export blob_name1=$4
+export blob_name2=$5
 
 # Downloading Blob
-az storage blob download --container-name $container_name --name $blob_name --file flaskwebapp/$blob_name --output table
+mkdir flaskwebapp
+az storage blob download --container-name $container_name --name $blob_name1 --file flaskwebapp/$blob_name1 --output table
+az storage blob download --container-name $container_name --name $blob_name2 --file flaskwebapp/$blob_name2 --output table
 az storage blob list --container-name $container_name --output table
