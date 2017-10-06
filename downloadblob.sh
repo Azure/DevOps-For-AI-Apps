@@ -13,5 +13,5 @@ export container_name=$3
 export blob_name=$4
 
 # Downloading Blob
-az storage blob download --container-name $container_name --name $blob_name --file $blob_name --output table
+az storage blob download --container-name $container_name --name $blob_name --file flaskwebapp/$blob_name --output table
 az storage blob list --container-name $container_name --output table
