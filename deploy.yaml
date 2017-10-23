@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: imageclassificationapp
+ labels:
+   app: web
+spec:
+ containers:
+   – name: model-api
+     image: $ACR_DNS/model-api:$(Build.BuildId)
+     ports:
+       – containerPort: 88
