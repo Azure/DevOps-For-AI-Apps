@@ -4,7 +4,7 @@ In this tutorial we demonstrate how you can build a continous integration pipeli
 
 The application securely pulls the latest model from an Azure Storage account and packages that as part of the application. Teh deployed application has the app code and ML model packaged as single container.
 
-This decouples the app developers and data scientists, to make sure that the production app is always running the latest code with latest ML model.
+This decouples the app developers and data scientists, to make sure that their production app is always running the latest code with latest ML model.
 
 Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app.
 
