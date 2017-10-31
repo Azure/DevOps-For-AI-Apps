@@ -13,7 +13,7 @@ At the end of this tutorial, we will have a pipeline for our AI application that
 1. Developer work on the IDE of their choice on the application code.
 2. They commit the code to source control of their choice (VSTS has good support for various source controls)
 3. Separately, Data scientist work on developing their model.
-4. Once happy they publish the model to a model repository, in this case we are using blob storage account.
+4. Once happy they publish the model to a model repository, in this case we are using blob storage account. This could be easily replaced with Azure ML Workbench's Model management service through their REST APIs.
 5. A build is kicked off in VSTS based on the commit in GitHub.
 6. VSTS Build pipeline pulls the latest model from Blob container and creates a container.
 7. VSTS pushes the image to private image repository in Azure Container Registry
@@ -23,8 +23,20 @@ At the end of this tutorial, we will have a pipeline for our AI application that
 11. DNS server passes the request to load balancer and sends the response back to user.
 
 ## Prerequisites
-* A VSTS account
-* An AKS cluster
-* Azure Container Registy account
-* 
+* [Visual Studio Team Services Account](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)
+* [Azure CLI] (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure Kubernetes Service (AKS) cluster] (https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+* [Azure Container Registy (ACR) account] (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+* [Install Kubectl to run commands against Kubernetes cluster.](https://kubernetes.io/docs/tasks/tools/install-kubectl/) We will need this to fetch configuration from AKS cluster. 
+* Fork the repository to your GitHub account.
+
+## Creating VSTS Build Definition
+
+Go to the VSTS account that you created as part of the prereqs. You can find the URL for the VSTS account from Azure Portal under overview of your team account.
+
+On the landing page, click on the new project icon to create a project for your work.
+
+![VSTS Landing Page](images/
+
+
 
