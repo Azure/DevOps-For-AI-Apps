@@ -36,7 +36,20 @@ Go to the VSTS account that you created as part of the prereqs. You can find the
 
 On the landing page, click on the new project icon to create a project for your work.
 
-![VSTS Landing Page](images/
+![VSTS New Project](images/vsts-newproject.PNG)
+
+Go to your project homepage and click on "Build and Releases tab" from the menu. To create a new Build Definition click on the  "+ New" icon on top right. We will start from an empty process and add tasks for our build process. Notice here that VSTS provides some well definied build definition process for commonly used stack.
+
+![VSTS New Build Definition](images/vsts-newbuilddef.PNG)
+
+![VSTS Empty Process Definition](images/vsts-emptyprocess.PNG)
+
+
+
+
+
+
+
 
 
 
