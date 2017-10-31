@@ -8,6 +8,6 @@ We will use a simple python flask application, which is available on GitHub <add
 
 At the end of this tutorial, we will have a pipeline for our AI application that picks the latest commit from GitHub repository and the latest pre-trained machine learning model from the Azure Storage container, stores the image in a private image repository on ACR and deploys it on a Kubernetes cluster running on AKS.
 
-![Architecture](images/Architecture.png?raw=true)
+![Architecture](images/Architecture.PNG?raw=true)
 
 
