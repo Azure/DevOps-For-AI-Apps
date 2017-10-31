@@ -10,4 +10,21 @@ At the end of this tutorial, we will have a pipeline for our AI application that
 
 ![Architecture](images/Architecture.PNG?raw=true)
 
+1. Developer work on the IDE of their choice on the application code.
+2. They commit the code to source control of their choice (VSTS has good support for various source controls)
+3. Separately, Data scientist work on developing their model.
+4. Once happy they publish the model to a model repository, in this case we are using blob storage account.
+5. A build is kicked off in VSTS based on the commit in GitHub.
+6. VSTS Build pipeline pulls the latest model from Blob container and creates a container.
+7. VSTS pushes the image to private image repository in Azure Container Registry
+8. On a set schedule (nightly), release pipeline is kicked off.
+9. Latest image from ACR is pulled and deployed across Kubernetes cluster on AKS.
+10. Users request for the app goes through DNS server.
+11. DNS server passes the request to load balancer and sends the response back to user.
+
+## Prerequisites
+* A VSTS account
+* An AKS cluster
+* Azure Container Registy account
+* 
 
