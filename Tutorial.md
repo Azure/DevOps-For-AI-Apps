@@ -38,11 +38,21 @@ On the landing page, click on the new project icon to create a project for your 
 
 ![VSTS New Project](images/vsts-newproject.PNG?raw=true)
 
-Go to your project homepage and click on "Build and Releases tab" from the menu. To create a new Build Definition click on the  "+ New" icon on top right. We will start from an empty process and add tasks for our build process. Notice here that VSTS provides some well definied build definition process for commonly used stack.
+Go to your project homepage and click on "Build and Releases tab" from the menu. To create a new Build Definition click on the  "+ New" icon on top right. 
 
 ![VSTS New Build Definition](images/vsts-newbuilddef.PNG?raw=true)
 
+We will start from an empty process and add tasks for our build process. Notice here that VSTS provides some well definied build definition process for commonly used stack like ASP .Net
+
 ![VSTS Empty Process Definition](images/vsts-emptyprocess.PNG?raw=true)
+
+Name your build definition and select a agent from the agent queue, we select Hosted Linux queue since our app is Linix based and we want to run some Linux specific command in further steps. When you queue a build, VSTS provides you an agent to run your build definition on.
+
+![VSTS Empty Process Definition](images/vsts-build-agentselection.PNG?raw=true)
+
+Under Get-Sources option, you can link the VSTS Build to source control of your choice. In this tutorial we are using GitHub, you can authorize VSTS to access your repository and then select it from the drop down. You can also select the branch that you want to build your app from, we select master.
+
+![VSTS Empty Process Definition](images/vsts-task-getsources.PNG?raw=true)
 
 
 
