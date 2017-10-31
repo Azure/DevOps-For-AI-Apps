@@ -52,7 +52,27 @@ Name your build definition and select a agent from the agent queue, we select Ho
 
 Under Get-Sources option, you can link the VSTS Build to source control of your choice. In this tutorial we are using GitHub, you can authorize VSTS to access your repository and then select it from the drop down. You can also select the branch that you want to build your app from, we select master.
 
-![VSTS Empty Process Definition](images/vsts-task-getsources.PNG?raw=true)
+![VSTS Get Sources Task Definition](images/vsts-task-getsources.PNG?raw=true)
+
+You want to kick off a new build each time there ia new checkin to the repository, to do so you can go to the trigger tab and enable continous integration. You can again select which branch you want to build off from.
+
+![VSTS CI Build Trigger](images/vsts-build-trigger.PNG?raw=true)
+
+At this point we have the build definition to triggered to run on a linux agent for each commit to the repository. Let's start with adding tasks to build container for our app.
+
+As first task we want to download the pre-trained model to the VSTS agent that we are building on, we are using a simple shell script to download the blob. Add Shell Script vsts task to execute the script.
+
+![VSTS Docker Task](images/vsts-sshtask.PNG?raw=true)
+
+Add the path to the script, in the arguments section pass in the value for your storage account name, access key, container name and blob names (model name and sysnet file).
+
+![VSTS Docker Task](images/vsts-sshtaskdetails.PNG?raw=true)
+
+Add a Docker task to run docker commands. We will use this task to build container for our AI application. We are using Dockerfile that contains all the commands to assemble an image. 
+
+![VSTS Docker Task](images/vsts-dockertask.PNG?raw=true)
+
+Within the Docker task, give it a name
 
 
 
