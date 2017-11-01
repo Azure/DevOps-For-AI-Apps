@@ -94,9 +94,9 @@ Notice that we are making use of a variable here (MODEL_API_URL), you can define
 
 ![VSTS Defining process variable](images/vsts-processvariable.PNG?raw=true)
 
+Next, we pass an image to the API and get the score back from it. Our test script is in the test/integration folder. We are only doing simple tests here but you can add more sophisticated tests to your workflow.
 
-
-
+![VSTS Anaconda test](images/vsts-anacondatest.PNG?raw=true)
 
 
 
