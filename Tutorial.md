@@ -72,7 +72,27 @@ Add a Docker task to run docker commands. We will use this task to build contain
 
 ![VSTS Docker Task](images/vsts-dockertask.PNG?raw=true)
 
-Within the Docker task, give it a name
+Within the Docker task, give it a name, select subscription and ACR from dropdown. For action select "Build an image" and then give it the path to dockerfile. For Image name, select the following format <YOUR_ACR_URL>/<CONTAINER_NAME>:$Build.BuildId. BuildId is a VSTS agent parameter and gets updated for each build.
+
+![VSTS Docker Task Details](images/vsts-dockertaskdetails.PNG?raw=true)
+
+After building the container for our application, we want to test the container. To do so, we will first start the container using the command line task. Note that we are using version 2.* of this task that gives us the option to pass inlien script. We are doing something tricky here, VSTS agent that builds our code is a docker container itself. So basically we are trying to start a container within a container. This is not hard but we need to make sure that both the containers are running on same network so we can access the ports correctly. To do so we first get the container id of the vsts build agent, by running following command.
+BUILD_CONTAINER_ID=$(docker ps --filter "ancestor=chris/vsts-agent" --filter "status=running" --format "{{.ID}}") 
+
+Please Note that the image name of the VSTS agent (chris/vsts-agent) might change in future, which will break this command but you can run other docker specific commands to find the image name of VSTS agent.
+
+Next we start our model-api image that we created in previous step and passing the network parameter to run it on same network as build VSTS agent container.
+docker run -d --network container:$BUILD_CONTAINER_ID acrforblog.azurecr.io/model-api:$(Build.BuildId)
+
+![VSTS Starting container](images/vsts-startingcontainer.PNG?raw=true)
+
+Once we have the container running, we are doing a simple API test to the version endpoint, to make sure the container started ok. We are sleeping for 10 seconds to wait for the container to come up. 
+
+![VSTS Simple API test](images/vsts-simpleAPItest.PNG?raw=true)
+
+Notice that we are making use of a variable here (MODEL_API_URL), you can define custom process variable for your builds. To see a list of pre-defined variables and add your own, click on the variables tab.
+
+![VSTS Defining process variable](images/vsts-processvariable.PNG?raw=true)
 
 
 
