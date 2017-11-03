@@ -98,6 +98,15 @@ Next, we pass an image to the API and get the score back from it. Our test scrip
 
 ![VSTS Anaconda test](images/vsts-anacondatest.PNG?raw=true)
 
+Finally, we push the image that we have built to a private repository in Azure container registry. 
+
+![VSTS Anaconda test](images/vsts-pushimage.PNG?raw=true)
+
+In the next two steps, we copy over files from the sources directory over to target directory so we can prepare the artifact for release phase. This step is required so you can trigger the release pipelines. You can choose what files make it to the artifact, by using regex pattern.
+
+![VSTS Anaconda test](images/vsts-copyfiles.PNG?raw=true)
+
+
 
 
 
