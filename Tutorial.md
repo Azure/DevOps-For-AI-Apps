@@ -104,7 +104,16 @@ Finally, we push the image that we have built to a private repository in Azure c
 
 In the next two steps, we copy over files from the sources directory over to target directory so we can prepare the artifact for release phase. This step is required so you can trigger the release pipelines. You can choose what files make it to the artifact, by using regex pattern.
 
-![VSTS Anaconda test](images/vsts-copyfiles.PNG?raw=true)
+![VSTS Copy files](images/vsts-copyfiles.PNG?raw=true)
+
+Once you have the artifact created, you have to publish it using the Publish Build Artifact task
+
+![VSTS Copy files](images/vsts-publishartifact.PNG?raw=true)
+
+Congratulations, you have successfully built your AI application by fetching a pre-trained model from a storage container, building the container image, doing basic integration test, pushing the container to your private container registry and publishing the artifact for downstream release process. 
+Note that we are doing basic testing here but you can add comprehensive test based on your application.
+
+
 
 
 
