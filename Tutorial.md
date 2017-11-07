@@ -1,4 +1,4 @@
-# DevOps for AI applications: Creating Continous Integration (CI)/ Continous Delivery (CD) pipeline using Visual Studio Team Services (VSTS), Azure Kubernetes Service (AKS) and Azure Container Registry (ACR).
+# DevOps for AI applications: Creating continous integration pipeline using Docker and Kubernetes.
 
 This tutorial demonstrates how to implement a CI/CD pipeline for an AI application. AI application is a combination of Application code embedded with a pretrained ML model. For this tutorial we are fetching a pre-trained model from a private Azure blob storage account, it could be a AWS S3 account as well.
 
@@ -106,12 +106,17 @@ In the next two steps, we copy over files from the sources directory over to tar
 
 ![VSTS Copy files](images/vsts-copyfiles.PNG?raw=true)
 
-Once you have the artifact created, you have to publish it using the Publish Build Artifact task
+Once you have the artifact created, you have to publish it using the Publish Build Artifact task. For publish location, leave it default (VSTS/TFS), other option is using Fileshare.
 
 ![VSTS Copy files](images/vsts-publishartifact.PNG?raw=true)
 
-Congratulations, you have successfully built your AI application by fetching a pre-trained model from a storage container, building the container image, doing basic integration test, pushing the container to your private container registry and publishing the artifact for downstream release process. 
-Note that we are doing basic testing here but you can add comprehensive test based on your application.
+Save (not save and queue) your build definition. Congratulations, you have successfully created a build defintion for your AI application by fetching a pre-trained model from a storage container, building the container image, doing basic integration test, pushing the container to your private container registry and publishing the artifact for downstream release process. Note that we are doing basic testing here but you can add more comprehensive tests based on your application.
+
+
+Release Definition
+
+Hover over the the Build and Releases tab on the top and select **Releases**. Click the "+" and select Create New definition option to create a new release definition.
+
 
 
 
