@@ -109,7 +109,7 @@ Once you have the artifact created, you have to publish it using the Publish Bui
 Save (not save and queue) your build definition. Congratulations, you have successfully created a build defintion for your AI application by fetching a pre-trained model from a storage container, building the container image, doing basic integration test, pushing the container to your private container registry and publishing the artifact for downstream release process. Note that we are doing basic testing here but you can add more comprehensive tests based on your application.
 
 
-Release Definition
+## Creating Release Definition
 
 Hover over the the Build and Releases tab on the top and select **Releases**. Click the "+" and select Create New definition option to create a new release definition. You can add multiple environments like Integration, Staging and Prod depending on your devOps needs but to keep it simple we will just create one environment and call it production. While creating a new environment VSTS gives you an option for selecting a template, select Deploy to Kubernetes cluster and hit apply.
 
@@ -135,7 +135,39 @@ In the Arguments section use the deploy flag and give it the deploy file name. I
 Hit save, you now have an end to end pipeline for Continous Integration and Continous Delivery.
 
 
+## Testing your CI/CD Pipeline
 
+
+To test your CI/CD pipeline, make some changes in your forked repository and push them to GitHub. If all works well, you will see a new Build being triggered which, in turn, will trigger a new Release. In the end, if you run “kubectl get pods” and “kubectl get services” commands you will get the following results:
+
+kubectl get pods
+NAME READY STATUS RESTARTS AGE
+mycache 1/1 Running 0 59s
+service-a 1/1 Running 0 1m
+service-b-1191627191-bmt76 1/1 Running 0 1m
+
+kubectl get services
+NAME CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+kubernetes 10.0.0.1 443/TCP 16d
+mycache 10.0.53.244 6379:30313/TCP 1m
+service-a 10.0.248.14 80:32019/TCP 1m
+service-b 10.0.77.83 80:30689/TCP 1m
+
+Bear in mind that it might take some time for the service-a external IP to be created (that’s why you’ll see a result for the external IP), since Azure backend has to create a new external Load Balancer service and configure the necessary firewall rules.
+
+When you get a public ip, try opening it on the browser. You should see a message that displays hostnames of both service-a and service-b applications. Try pressing “Say It Again” button a couple of times, you will see that Count variable is increased (remember that its value is persisted in Redis cache) and that service-b hostname remains the same, since there is only a single pod that contains the service-b application.
+
+website_a.png
+
+Go to the console and run “kubectl scale deployment service-b –replicas 3”. This will scale the deployment service-b (that contains service-b container image) to 3 replicas (3 pods). Wait a bit, then try pressing “Say It Again” button again. You can now see that requests are served by 3 different containers.
+
+website_b.png
+
+Next steps
+
+To learn more about CI/CD with VSTS, check here
+For more information regarding Kubernetes, check the official site here
+If you want to do CI/CD with Docker Swarm, check here for a great post that also served as an inspiration for this article
 
 
 
