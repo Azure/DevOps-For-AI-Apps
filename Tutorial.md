@@ -108,14 +108,35 @@ In the next two steps, we copy over files from the sources directory over to tar
 
 Once you have the artifact created, you have to publish it using the Publish Build Artifact task. For publish location, leave it default (VSTS/TFS), other option is using Fileshare.
 
-![VSTS Copy files](images/vsts-publishartifact.PNG?raw=true)
+![VSTS Publish Artifact](images/vsts-publishartifact.PNG?raw=true)
 
 Save (not save and queue) your build definition. Congratulations, you have successfully created a build defintion for your AI application by fetching a pre-trained model from a storage container, building the container image, doing basic integration test, pushing the container to your private container registry and publishing the artifact for downstream release process. Note that we are doing basic testing here but you can add more comprehensive tests based on your application.
 
 
 Release Definition
 
-Hover over the the Build and Releases tab on the top and select **Releases**. Click the "+" and select Create New definition option to create a new release definition.
+Hover over the the Build and Releases tab on the top and select **Releases**. Click the "+" and select Create New definition option to create a new release definition. You can add multiple environments like Integration, Staging and Prod depending on your devOps needs but to keep it simple we will just create one environment and call it production. While creating a new environment VSTS gives you an option for selecting a template, select Deploy to Kubernetes cluster and hit apply.
+
+![VSTS Deploy to Kubernetes template](images/vsts-deployToKubernetes.PNG?raw=true)
+
+Before you fill in the details for the Deploy to Kubernetes task in the Production environment, lets also add the artifact that we published as part of the build phase. 
+
+![VSTS Release Artifact](images/vsts-releaseselectartifact.PNG?raw=true)
+
+You can also select how often do you want your release pipeline to run. You can set a schedule (nightly, weekly etc.) or have continuos deployment where each build gets released in production. To enable continous deployment, select the lighting sign in the artifacts and enable CD.
+
+![VSTS Copy files](images/vsts-releasecdtrigger.PNG?raw=true)
+
+In the environments box, click on task and it will open a new screen. For Kubernetes service connection, click on New and it will open a new dialog. Add the necessary information in order to connect to the Kubernetes cluster. First, give a connection name. Then, you need to get the Server URL. You can get it either from the Azure Portal under overview as Master FQDN or try running “kubectl cluster-info” at your command prompt and get the URL of Kubernetes master. Finally, paste the entire content of your Kubernetes configuration file in the “Kubeconfig” field. Config file can be found under the .kube folder inside your home directory. For more details on how to get credentials for your ACS cluster, you can refer to the [documentation](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster) from ACS team. Click OK to save the connection.
+
+![VSTS Copy files](images/vsts-vsts-releasek8conn.PNG?raw=true)
+
+In the Arguments section use the deploy flag and give it the deploy file name. In the Working directory, select your working directory from the linked artifacts that you created in previous step.
+
+![VSTS Copy files](images/vsts-releasekubectlapply.PNG?raw=true)
+
+
+
 
 
 
