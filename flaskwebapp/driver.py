@@ -6,9 +6,13 @@ from cntk import load_model, combine
 from PIL import Image, ImageOps
 from io import BytesIO
 
+LABEL_FILE = 'synset.txt'
+MODEL_FILE = 'ResNet_152.model'
+
 logger = logging.getLogger("cntk_svc_logger")
 ch = logging.StreamHandler(sys.stdout)
 logger.addHandler(ch)
+
 
 trainedModel = None
 mem_after_init = None
@@ -24,11 +28,11 @@ def init():
     start = t.default_timer()
 
     # Load the model and labels from disk
-    with open('synset.txt', 'r') as f:
+    with open(LABEL_FILE, 'r') as f:
         labelLookup = [l.rstrip() for l in f]
 
     # Load model and load the model from brainscript (3rd index)
-    trainedModel = load_model('ResNet_152.model')
+    trainedModel = load_model(MODEL_FILE)
     trainedModel = combine([trainedModel.outputs[3].owner])
     end = t.default_timer()
 
