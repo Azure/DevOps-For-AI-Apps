@@ -18,6 +18,8 @@ class MockModel(object):
 
 
 def test_init(monkeypatch):
+    """ Tests model initialisation
+    """
     monkeypatch.setattr(driver, 'LABEL_FILE', '../flaskwebapp/synset.txt')
     monkeypatch.setattr(driver, 'MODEL_FILE', '../flaskwebapp/ResNet_152.model')
     init()
@@ -25,6 +27,8 @@ def test_init(monkeypatch):
 
 
 def test_run(monkeypatch):
+    """ Test the execution of the model
+    """
     monkeypatch.setattr(driver, 'trainedModel', MockModel())
     results , _ = run(input_string)
     assert results==[[('n01498041 stingray', 100.0), ('n01514668 cock', 80.0), ('n01514859 hen', 70.0)]]
