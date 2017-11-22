@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pip install -r /code/flaskwebapp/requirements.txt && \
     pip install https://cntk.ai/PythonWheel/CPU-Only/cntk-2.0rc1-cp27-cp27mu-linux_x86_64.whl
     
-ENV PYTHONPATH $PYTHONPATH:/code/flaskwebapp/:/code:/code/flaskwebapp
 
 EXPOSE 88
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
