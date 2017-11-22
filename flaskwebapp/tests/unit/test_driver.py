@@ -6,7 +6,7 @@ input_string='["iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAACVT/22AAEAAElEQVR4nMz9edRk
 
 class MockModel(object):
     def __init__(self):
-        super().__init__()
+        super(MockModel, self).__init__()
         self.arguments=['one']
 
     def eval(self, input_dict):
