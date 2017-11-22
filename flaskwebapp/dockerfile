@@ -2,9 +2,9 @@
 FROM ubuntu:16.04
 MAINTAINER Mathew Salvaris <mathew.salvaris@microsoft.com>
 
-RUN mkdir /code
-WORKDIR /code
-ADD . /code/
+RUN mkdir -p /code/flaskwebapp
+WORKDIR /code/flaskwebapp
+ADD . /code/flaskwebapp/
 ADD etc /etc
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
