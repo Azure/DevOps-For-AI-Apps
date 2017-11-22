@@ -19,8 +19,8 @@ class MockModel(object):
 def test_init(monkeypatch):
     """ Tests model initialisation
     """
-    monkeypatch.setattr(driver, 'LABEL_FILE', '../synset.txt')
-    monkeypatch.setattr(driver, 'MODEL_FILE', '../ResNet_152.model')
+    monkeypatch.setattr(driver, 'LABEL_FILE', 'synset.txt')
+    monkeypatch.setattr(driver, 'MODEL_FILE', 'ResNet_152.model')
     init()
     assert driver.trainedModel != None
 
