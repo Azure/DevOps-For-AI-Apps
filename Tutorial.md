@@ -10,9 +10,11 @@ We also recommend taking a look at our newly launched [Azure Machine Learning se
 
 You can easily consume your models developed using Azure ML in this tutorial. You can also seamlessly integrate with [Azure ML Model Management service](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/model-management-overview) via their REST APIs to fetch the latest ML model for your project. Lastly, if you don't want to pre-package the model with your application, you can deploy your model, at scale from within the Azure ML Workbench and consume it as REST endpoint in your application.
 
+In this tutorial we demonstrate how you can build a continous integration pipeline for an AI application. The application securely pulls the latest model from an Azure Storage account and packages that as part of the application. The deployed application has the app code and ML model packaged as single container. This decouples the app developers and data scientists, to make sure that their production app is always running the latest code with latest ML model. Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app. The goal of the tutorial is to show how easy it is do devops for an AI application.
+
 ## Introduction
 
-At the end of this tutorial, we will have a pipeline for our AI application that picks the latest commit from GitHub repository and the latest pretrained machine learning model from the Azure Storage container, stores the image in a private image repository on Azure Container Registry (ACR) and deploys it on a Kubernetes cluster running on Azure Container Service (AKS).
+At the end of this tutorial, you will have a pipeline for our AI application that picks the latest commit from GitHub repository and the latest pretrained machine learning model from the Azure Storage container, stores the image in a private image repository on Azure Container Registry (ACR) and deploys it on a Kubernetes cluster running on Azure Container Service (AKS).
 
 ![Architecture](images/Architecture.PNG?raw=true)
 
