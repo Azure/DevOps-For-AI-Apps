@@ -4,11 +4,13 @@ This tutorial demonstrates how to implement a Continous Integration (CI)/Contino
 
 We will use a simple python flask application, which is available on GitHub <add link here>.
 
-For an in-depth underastanding of how DevOps integrates with different stages of an AI Data Science project, checkout this comprehensive [article](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/team-data-science-process-for-devops) from our team. In addition, do checkout this great [series](https://blogs.msdn.microsoft.com/buckwoody/category/devops-for-data-science/) of blog posts on DevOps in Data Science from Buck Woody. 
+For an in-depth underastanding of how DevOps integrates with different stages of an AI Data Science project, checkout this [training](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/team-data-science-process-for-devops) from our team. In addition, do checkout this great [series](https://blogs.msdn.microsoft.com/buckwoody/category/devops-for-data-science/) of blog posts on DevOps in Data Science from Microsoft. 
 
 We also recommend taking a look at our newly launched [Azure Machine Learning services](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/overview-what-is-azure-ml). Azure ML is an integrated, end-to-end data science and advanced analytics solution for professional data scientists to prepare data, develop experiments, and deploy models at cloud scale.
 
-You can easily consume your models developed using Azure ML in this tutorial. You can also seamlessly integrate with [Azure ML Model Management service](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/model-management-overview) via their REST APIs to fetch the latest ML model for your project. Lastly, if you don't want to pre-package the model with your application, you can deploy your model, at scale from within the Azure ML Workbench and consume it as REST endpoint in your application.
+You can easily consume your models developed using Azure ML in this tutorial. You can also seamlessly integrate with [Azure ML Model Management service](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/model-management-overview) via their REST APIs to fetch specific ML model version for your application. To download a model stored in model management service, you can use the [Get Model Details](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-api-reference#get-model-details) endpoint that returns the URL of the blob container that stores the model.
+
+Lastly, if you don't want to pre-package the model with your application, you can deploy your model, at scale from within the Azure ML workbench and consume it as REST endpoint in your application.
 
 In this tutorial we demonstrate how you can build a continous integration pipeline for an AI application. The application securely pulls the latest model from an Azure Storage account and packages that as part of the application. The deployed application has the app code and ML model packaged as single container. This decouples the app developers and data scientists, to make sure that their production app is always running the latest code with latest ML model. Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app. The goal of the tutorial is to show how easy it is do devops for an AI application.
 
@@ -29,6 +31,8 @@ At the end of this tutorial, you will have a pipeline for our AI application tha
 9. Latest image from ACR is pulled and deployed across Kubernetes cluster on ACS.
 10. Users request for the app goes through DNS server.
 11. DNS server passes the request to load balancer and sends the response back to user.
+
+Note: If you are using Azure ML workbench already, you probably realize that you can get all the way to step 9 i.e. model operationalized and deployed on a AKS cluster. The tutorial aims to provide ways for you to customize the container that gets deployed on AKS cluster. Alternatively, if you want to package your ML model and application code in a single container for low latency edge scenario instead of having two containers, this tutorial is for you. 
 
 ## Prerequisites
 * [Visual Studio Team Services Account](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)
