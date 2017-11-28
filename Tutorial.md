@@ -4,8 +4,12 @@ This tutorial demonstrates how to implement a Continous Integration (CI)/Contino
 
 We will use a simple python flask application, which is available on GitHub <add link here>.
 
-For an in-depth understasnding of how DevOps integrates with different stages of an AI Data Science project, checkout this comprehensive [article](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/team-data-science-process-for-devops) from the TDSP team. In addition, do checkout this great [series](https://blogs.msdn.microsoft.com/buckwoody/category/devops-for-data-science/) of blogs on DevOps in Data Science from Buck Woody. 
-  
+For an in-depth underastanding of how DevOps integrates with different stages of an AI Data Science project, checkout this comprehensive [article](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/team-data-science-process-for-devops) from our team. In addition, do checkout this great [series](https://blogs.msdn.microsoft.com/buckwoody/category/devops-for-data-science/) of blog posts on DevOps in Data Science from Buck Woody. 
+
+We also recommend taking a look at our newly launched [Azure Machine Learning services](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/overview-what-is-azure-ml). Azure ML is an integrated, end-to-end data science and advanced analytics solution for professional data scientists to prepare data, develop experiments, and deploy models at cloud scale.
+
+You can easily consume your models developed using Azure ML in this tutorial. You can also seamlessly integrate with [Azure ML Model Management service](https://docs.microsoft.com/en-gb/azure/machine-learning/preview/model-management-overview) via their REST APIs to fetch the latest ML model for your project. Lastly, if you don't want to pre-package the model with your application, you can deploy your model, at scale from within the Azure ML Workbench and consume it as REST endpoint in your application.
+
 ## Introduction
 
 At the end of this tutorial, we will have a pipeline for our AI application that picks the latest commit from GitHub repository and the latest pretrained machine learning model from the Azure Storage container, stores the image in a private image repository on Azure Container Registry (ACR) and deploys it on a Kubernetes cluster running on Azure Container Service (AKS).
