@@ -85,9 +85,9 @@ Within the Docker task, give it a name, select subscription and ACR from dropdow
 ![VSTS Docker Task Details](images/vsts-dockertaskdetails.PNG?raw=true)
 
 After building the container for our application, we want to test the container. To do so, we will first start the container using the command line task. Note that we are using version 2.* of this task that gives us the option to pass inlien script. We are doing something tricky here, VSTS agent that builds our code is a docker container itself. So basically we are trying to start a container within a container. This is not hard but we need to make sure that both the containers are running on same network so we can access the ports correctly. To do so we first get the container id of the vsts build agent, by running following command.
-BUILD_CONTAINER_ID=$(docker ps --filter "ancestor=chris/vsts-agent" --filter "status=running" --format "{{.ID}}") 
+BUILD_CONTAINER_ID=$(docker ps --filter "ancestor=microsoft/vsts-agent" --filter "status=running" --format "{{.ID}}") 
 
-Please Note that the image name of the VSTS agent (chris/vsts-agent) might change in future, which will break this command but you can run other docker specific commands to find the image name of the VSTS agent.
+Please Note that the image name of the VSTS agent (microsoft/vsts-agent) might change in future, which will break this command but you can run other docker specific commands to find the image name of the VSTS agent.
 
 Next we start our model-api image that we created in previous step and passing the network parameter to run it on same network as build VSTS agent container.
 docker run -d --network container:$BUILD_CONTAINER_ID acrforblog.azurecr.io/model-api:$(Build.BuildId)
