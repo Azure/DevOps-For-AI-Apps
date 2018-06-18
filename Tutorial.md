@@ -73,6 +73,9 @@ As first task we want to download the pre-trained model to the VSTS agent that w
 ![VSTS Docker Task](images/vsts-sshtask.PNG?raw=true)
 
 Add the path to the script, in the arguments section pass in the value for your storage account name, access key, container name and blob names (model name and sysnet file).
+If you don't have a pretrained model, you can download the model and synset file from following links a put in a blob container to get started.
+http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
+https://www.cntk.ai/resnet/ResNet_152.model
 
 ![VSTS Docker Task](images/vsts-sshtaskdetails.PNG?raw=true)
 
