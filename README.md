@@ -6,24 +6,6 @@ The application securely pulls the latest model from an Azure Storage account an
 
 This decouples the app developers and data scientists, to make sure that their production app is always running the latest code with latest ML model.
 
-Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app.
+Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app. The goal is to show how easy it is do devops for an AI application.
 
-The goal is to show how easy it is do devops for an AI application.
-
-
-Steps to set up build and test
-* Create VM on Azure
-* Install Docker
-* Setup Docker to be executed without sudo
-If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:
-
-	• sudo usermod -aG docker ${USER}
-To apply the new group membership, you can log out of the server and back in, or you can type the following:
-
-	• su - ${USER}
-You will be prompted to enter your user's password to continue. Afterwards, you can confirm that your user is now added to the docker group by typing:
-
-	• id -nG
-* Login to ACR so credentials are stored
-* Install anaconda
-https://medium.com/@GalarnykMichael/install-python-on-ubuntu-anaconda-65623042cb5a
+For detailed instructions please refer to the [tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/jainr-refactor/Tutorial.md)
