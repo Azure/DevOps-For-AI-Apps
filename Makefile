@@ -24,7 +24,7 @@ flaskwebapp/synset.txt:
 	wget http://data.dmlc.ml/mxnet/models/imagenet/synset.txt -P flaskwebapp
 
 flaskwebapp/ResNet_152.model:
-	wget https://migonzastorage.blob.core.windows.net/deep-learning/models/cntk/imagenet/ResNet_152.model -P flaskwebapp
+	wget https://www.cntk.ai/resnet/ResNet_152.model -P flaskwebapp
 
 run-local:
 	docker run -p 88:88 $(image_name)
