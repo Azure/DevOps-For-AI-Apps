@@ -21,7 +21,7 @@ image: flaskwebapp/ResNet_152.model flaskwebapp/synset.txt
 	docker build -t $(image_name) -f flaskwebapp/dockerfile flaskwebapp
 
 flaskwebapp/synset.txt:
-	wget https://ikcompuvision.blob.core.windows.net/acs/synset.txt -P flaskwebapp
+	wget http://data.dmlc.ml/mxnet/models/imagenet/synset.txt -P flaskwebapp
 
 flaskwebapp/ResNet_152.model:
 	wget https://migonzastorage.blob.core.windows.net/deep-learning/models/cntk/imagenet/ResNet_152.model -P flaskwebapp
