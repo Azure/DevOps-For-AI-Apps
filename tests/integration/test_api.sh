@@ -6,10 +6,11 @@ MODEL_API_URL=$1
 # Simple API test
 echo "Testing API"
 reply=$(curl -s $MODEL_API_URL/version)
-if [[ $reply == 2.0rc1 ]]; then
+if [[ $reply == 2.0 ]]; then
         echo -e "Successfully validated version API call"
 else
         echo "Basic API call failed"
+        echo "Reply: "$reply
         exit 1
 fi
 
