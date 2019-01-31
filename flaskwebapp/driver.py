@@ -31,9 +31,9 @@ def init():
     with open(LABEL_FILE, 'r') as f:
         labelLookup = [l.rstrip() for l in f]
 
-    # Load model and load the model from brainscript (3rd index)
+    # Load model and load the model from brainscript (2nd index and third item)
     trainedModel = load_model(MODEL_FILE)
-    trainedModel = combine([trainedModel.outputs[3].owner])
+    trainedModel = combine([trainedModel.outputs[2].owner])
     end = t.default_timer()
 
     loadTimeMsg = "Model loading time: {0} ms".format(round((end - start) * 1000, 2))
