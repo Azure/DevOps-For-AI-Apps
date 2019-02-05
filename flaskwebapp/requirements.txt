@@ -1,7 +1,7 @@
 pillow
 click==6.7
 configparser==3.5.0
-Flask==0.11.1
+flask>=0.12.3
 gunicorn==19.6.0
 json-logging-py==0.2
 MarkupSafe==1.0
