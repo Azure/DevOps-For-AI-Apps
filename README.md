@@ -8,7 +8,7 @@ This decouples the app developers and data scientists, to make sure that their p
 
 Variation to this tutorial could be consuming the ML application as an endpoint instead of packaging it in the app. The goal is to show how easy it is do devops for an AI application.
 
-For detailed instructions please refer to the [tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/jainr-refactor/Tutorial.md)
+For detailed instructions please refer to the [tutorial](./Tutorial.md)
 
 Details about the code repository
 * flaskwebapp - contains the application code.
