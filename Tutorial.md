@@ -101,7 +101,7 @@ Once we have the container running, we are doing a simple API test to the versio
 
 ![VSTS Simple API test](images/vsts-simpleAPItestV2.PNG?raw=true)
 
-Notice that we are making use of a variable here ($containerip), since this api is getting build on Ubuntu VM, we are trying to get the ip address of created container and assigned it in this variable so that we can access the api for testing.
+Notice that we are making use of a variable here ($containerip), since this api is getting build on Ubuntu VM, we are trying to get the ip address of created container and assign it in this variable so that we can access the api for testing.
 
 
 Next, we pass an image to the API and get the score back from it. Our test script is in the test/integration folder. We are only doing simple tests here but you can add more sophisticated tests to your workflow.
