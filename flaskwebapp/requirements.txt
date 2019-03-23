@@ -1,3 +1,4 @@
+setuptools >= 0.8.0
 pillow
 click==6.7
 configparser==3.5.0
